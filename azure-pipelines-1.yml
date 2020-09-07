@@ -80,6 +80,14 @@ steps:
   inputs:
     codeCoverageTool: 'cobertura'
     summaryFileLocation: '$(Build.SourcesDirectory)/**/coverage.cobertura.xml'
+    
+- task: mspremier.BuildQualityChecks.QualityChecks-task.BuildQualityChecks@7
+  displayName: 'Check build quality'
+  inputs:
+    checkCoverage: true
+    coverageFailOption: fixed
+    coverageType: lines
+    coverageThreshold: 60
 
 - task: DotNetCoreCLI@2
   displayName: 'Publish the project - $(buildConfiguration)'
