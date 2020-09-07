@@ -58,6 +58,12 @@ steps:
     command: custom
     custom: tool
     arguments: 'install dotnet-reportgenerator-globaltool'
+
+- task: DotNetCoreCLI@2
+  displayName: 'Restore Nuget reference for coverlet.msbuild'
+  inputs:
+    command: 'restore coverlet.msbuild'
+    projects: '**/*.Tests.csproj'
     
 - task: DotNetCoreCLI@2
   displayName: 'Run unit tests - $(buildConfiguration)'
