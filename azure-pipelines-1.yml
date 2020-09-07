@@ -58,10 +58,11 @@ steps:
     command: custom
     custom: tool
     arguments: 'install dotnet-reportgenerator-globaltool'
-
+    
+-script : echo '$(Build.SourcesDirectory)'
+ displayName: 'Get Build.SourcesDirectory'
 - task: DotNetCoreCLI@2
   displayName: 'Restore Nuget reference for coverlet.msbuild'
-  echo '$(Build.SourcesDirectory)'
   inputs:
     workingDirectory: '$(Build.SourcesDirectory)/Tailspin.SpaceGame.Web.Tests'
     command: 'add Tailspin.SpaceGame.Web.Tests package coverlet.msbuild'
