@@ -62,8 +62,9 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: 'Restore Nuget reference for coverlet.msbuild'
   inputs:
-    command: 'restore coverlet.msbuild'
-    projects: '**/*.Tests.csproj'
+    workingDirectory: '$(Build.SourcesDirectory)/Tailspin.SpaceGame.Web.Tests'
+    command: 'add Tailspin.SpaceGame.Web.Tests package coverlet.msbuild'
+    
     
 - task: DotNetCoreCLI@2
   displayName: 'Run unit tests - $(buildConfiguration)'
